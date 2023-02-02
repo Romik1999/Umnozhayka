@@ -4,9 +4,6 @@ import { Navigate } from "./Navigate";
 
 export const App = () => {
   return (
-    // <SafeAreaView style={styles.wrapper}>
-    //   <Text>Hello!</Text>
-    // </SafeAreaView>
     <Navigate/>
   );
 };

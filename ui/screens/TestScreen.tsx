@@ -1,13 +1,5 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React from "react";
+import { SafeAreaView, StyleSheet, Text } from "react-native";
 
 export const TestScreen = () => {
   return (
@@ -20,6 +12,6 @@ export const TestScreen = () => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: 'red',
-  },
+    backgroundColor: "red"
+  }
 });
