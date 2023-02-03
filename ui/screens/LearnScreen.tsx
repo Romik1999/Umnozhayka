@@ -20,6 +20,5 @@ export const LearnScreen = () => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: 'red',
   },
 });
