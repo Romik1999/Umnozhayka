@@ -1,10 +1,8 @@
-const SET_CURRENT_NUMBER = "SET_CURRENT_NUMBER"
+const SET_CURRENT_NUMBER = 'SET_CURRENT_NUMBER';
 
 const initialState = {
-  currentNumber: 1
+  currentNumber: '1'
 }
-
-
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
