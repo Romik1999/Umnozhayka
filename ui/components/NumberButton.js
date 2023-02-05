@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Dimensions, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { COLORS } from "../../assets/style";
 
 export const NumberButton = (props) => {
@@ -19,13 +19,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: COLORS.yellow,
-    width: 70,
+    width: 60,
     height: 50,
     borderRadius: 20,
     padding: 10,
   },
   text: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: "bold",
     color: "#000000",
   },
