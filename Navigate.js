@@ -10,7 +10,7 @@ import { SettingsScreen } from "./ui/screens/SettingsScreen";
 import { TaskScreen } from "./ui/screens/TaskScreen";
 import { ResultScreen } from "./ui/screens/ResultScreen";
 import { TestScreen } from "./ui/screens/TestScreen";
-import settings from "./assets/images/settings.png";
+import settings from './assets/images/settings.png';
 import settingsPink from "./assets/images/settingsPink.png";
 import { COLORS } from "./assets/style";
 
