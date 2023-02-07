@@ -29,7 +29,7 @@ export const SettingsScreen = (props) => {
   };
 
   const onStartTest = () => {
-    navigation.navigate('Task', {name: 'TestScreen'});
+    navigation.navigate("Task", { screen: "TaskScreen", initial: false });
   };
 
   return (

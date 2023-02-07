@@ -1,26 +1,41 @@
-const SET_CURRENT_NUMBER = 'SET_CURRENT_NUMBER';
-const SET_HARD = 'SET_HARD';
-const SET_FOR_SPEED = 'SET_FOR_SPEED';
+const SET_CURRENT_NUMBER = "SET_CURRENT_NUMBER";
+const SET_HARD = "SET_HARD";
+const SET_FOR_SPEED = "SET_FOR_SPEED";
+const SET_TASK_BUTTONS = "SET_TASK_BUTTONS";
 
 const initialState = {
-  currentNumber: '1',
+  currentNumber: "1",
   forSpeed: true,
   hard: true,
-}
+  taskButtons: {
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+    7: false,
+    8: false,
+    9: false,
+  },
+};
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CURRENT_NUMBER:
-      return { ...state, currentNumber: action.currentNumber }
+      return { ...state, currentNumber: action.currentNumber };
     case SET_HARD:
-      return { ...state, hard: action.hard }
+      return { ...state, hard: action.hard };
     case SET_FOR_SPEED:
-      return { ...state, forSpeed: action.forSpeed }
+      return { ...state, forSpeed: action.forSpeed };
+    case SET_TASK_BUTTONS:
+      return { ...state, taskButtons: action.taskButtons };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export const setCurrentNumber = currentNumber => ({type:SET_CURRENT_NUMBER, currentNumber});
-export const setHard = hard => ({type:SET_HARD, hard});
-export const setForSpeed = forSpeed => ({type:SET_FOR_SPEED, forSpeed});
+export const setCurrentNumber = currentNumber => ({ type: SET_CURRENT_NUMBER, currentNumber });
+export const setHard = hard => ({ type: SET_HARD, hard });
+export const setForSpeed = forSpeed => ({ type: SET_FOR_SPEED, forSpeed });
+export const setTaskButtons = taskButtons => ({ type: SET_TASK_BUTTONS, taskButtons });

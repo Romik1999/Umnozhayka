@@ -16,9 +16,8 @@ export const HomeScreen = (props) => {
   };
 
   const onPressTest = () => {
-    navigation.navigate("Test");
+    navigation.navigate("Task", { screen: "TaskScreen", initial: false });
   };
-
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -86,6 +85,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-evenly",
-    height: Dimensions.get('window').height * 0.5,
+    height: Dimensions.get("window").height * 0.5
   }
 });
