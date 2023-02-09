@@ -2,6 +2,7 @@ const SET_CURRENT_NUMBER = "SET_CURRENT_NUMBER";
 const SET_HARD = "SET_HARD";
 const SET_FOR_SPEED = "SET_FOR_SPEED";
 const SET_TASK_BUTTONS = "SET_TASK_BUTTONS";
+const SET_TIMER = 'SET_TIMER';
 
 const initialState = {
   currentNumber: "1",
@@ -18,6 +19,7 @@ const initialState = {
     8: false,
     9: false,
   },
+  timer: '0'
 };
 
 export const reducer = (state = initialState, action) => {
@@ -30,6 +32,8 @@ export const reducer = (state = initialState, action) => {
       return { ...state, forSpeed: action.forSpeed };
     case SET_TASK_BUTTONS:
       return { ...state, taskButtons: action.taskButtons };
+    case SET_TIMER:
+      return { ...state, timer: action.timer };
     default:
       return state;
   }
@@ -39,3 +43,4 @@ export const setCurrentNumber = currentNumber => ({ type: SET_CURRENT_NUMBER, cu
 export const setHard = hard => ({ type: SET_HARD, hard });
 export const setForSpeed = forSpeed => ({ type: SET_FOR_SPEED, forSpeed });
 export const setTaskButtons = taskButtons => ({ type: SET_TASK_BUTTONS, taskButtons });
+export const setTimer = timer => ({ type: SET_TIMER, timer });
