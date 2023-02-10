@@ -41,12 +41,12 @@ export const SettingsScreen = (props) => {
       <View style={styles.switchBlock}>
         <View style={styles.switchRow}>
           <Text>1 минута</Text>
-          <ToggleSwitch onToggleSwitch={onToggleForSpeed} value={forSpeed} />
+          <ToggleSwitch onToggleSwitch={onToggleHard} value={hard} />
           <Text>30 сек</Text>
         </View>
         <View style={styles.switchRow}>
           <Text>Без таймера</Text>
-          <ToggleSwitch onToggleSwitch={onToggleHard} value={hard} />
+          <ToggleSwitch onToggleSwitch={onToggleForSpeed} value={forSpeed} />
           <Text>с таймером</Text>
         </View>
       </View>
