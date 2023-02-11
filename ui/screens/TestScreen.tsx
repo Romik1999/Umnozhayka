@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Dimensions, Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { useFocusEffect } from '@react-navigation/native';
 import { COLORS } from "../../assets/style";
 import mainImage from "../../assets/images/main.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,19 +10,23 @@ import { NumberButtonAnswer } from "../components/NumberButtonAnswer";
 import { ArrowButton } from "../components/ArrowButton";
 import { AnswerButton } from "../components/AnswerButton";
 
-export const TestScreen = () => {
+export const TestScreen = (props) => {
+  const {navigation} = props;
+  const [currentAnswerDone, setCurrentAnswerDone] = useState(false);
   const timer = useSelector((state) => state.app.timer);
   const forSpeed = useSelector((state) => state.app.forSpeed);
   const hard = useSelector((state) => state.app.hard);
   const currentQuestion = useSelector((state) => state.app.currentQuestion);
   const currentAnswer = useSelector((state) => state.app.currentAnswer);
   const answers = useSelector((state) => state.app.answers);
+  const firstMultiplier = useSelector((state) => state.app.firstMultiplier);
+  const secondMultiplier = useSelector((state) => state.app.secondMultiplier);
   const dispatch = useDispatch();
 
   const onPressNumberForAnswer = (number) => {
     dispatch(setCurrentAnswer(currentAnswer.concat(number)));
   };
-  console.log(currentAnswer);
+
   const onPressClearButton = () =>{
     dispatch(setCurrentAnswer(currentAnswer.slice(0, -1)));
   }
@@ -49,13 +54,41 @@ export const TestScreen = () => {
     const updateAnswers = {...answers}
     updateAnswers[currentQuestion] = currentAnswer
     dispatch(setAnswers(updateAnswers))
-    dispatch(currentAnswer(''))
+    dispatch(setCurrentAnswer(''))
+    if (currentQuestion < 15) {
+      dispatch(setCurrentQuestion(currentQuestion + 1));
+    } else if (currentQuestion === 15) {
+      dispatch(setCurrentQuestion(15));
+    }
   };
 
+  useFocusEffect(
+    React.useCallback(() => {
+      if (forSpeed && hard) {
+        const time1 = window.setTimeout(() => {
+          navigation.navigate("Task", { screen: "ResultScreen", initial: false });
+        }, 33000);
+        return () => clearTimeout(time1);
+      } else if (forSpeed && !hard) {
+        const time2 = window.setTimeout(() => {
+          navigation.navigate("Task", { screen: "ResultScreen", initial: false });
+        }, 64000);
+        return () => clearTimeout(time2);
+      } else if (!forSpeed) {
+        const time3 = window.setTimeout(() => {
+        }, 1000);
+        return () => clearTimeout(time3);
+      }
+      return () => {};
+    }, [forSpeed, hard])
+  );
 
-  useEffect(() => {
-    hard ? dispatch(setTimer(30)) : dispatch(setTimer(60));
-  }, [hard]);
+  useFocusEffect(
+    React.useCallback(() => {
+      hard ? dispatch(setTimer(30)) : dispatch(setTimer(60));
+      return () => {};
+    }, [forSpeed, hard])
+  );
 
   useEffect(() => {
     if (forSpeed && timer > 1) {
@@ -64,15 +97,21 @@ export const TestScreen = () => {
       }, 1000);
       return () => clearInterval(tic);
     }
-  }, [timer]);
+  }, [timer, forSpeed, hard]);
+
+  useEffect(() => {
+    currentAnswer === '' ? setCurrentAnswerDone(false) : setCurrentAnswerDone(true)
+  }, [currentAnswer]);
 
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.sectionTop}>
-        <View style={styles.sectionTimer}>
-          <Image style={styles.sectionTimerLogo} source={mainImage} />
-          <Text style={styles.sectionTimerText}>{timer}</Text>
-        </View>
+        {forSpeed &&
+          <View style={styles.sectionTimer}>
+            <Image style={styles.sectionTimerLogo} source={mainImage} />
+            <Text style={styles.sectionTimerText}>{timer}</Text>
+          </View>
+        }
         <View style={styles.sectionTitle}>
           <Text style={styles.sectionTitleText}>{currentQuestion} из 15</Text>
         </View>
@@ -81,7 +120,7 @@ export const TestScreen = () => {
 
       <View style={styles.contentBlock}>
         <Text style={styles.contentBlockText}>
-          2 x 2 = {currentAnswer}
+          {firstMultiplier[currentQuestion]} x {secondMultiplier[currentQuestion]} = {currentAnswer}
         </Text>
       </View>
 
@@ -105,7 +144,7 @@ export const TestScreen = () => {
 
       <View style={styles.bottomButtonsBlock}>
         <ArrowButton onPress={onPressBackButton} direction={"left"} />
-        <AnswerButton onPress={onPressAnswer} />
+        <AnswerButton onPress={onPressAnswer} isDisabled={currentAnswerDone ? false : true}/>
         <ArrowButton onPress={onPressNextButton} direction={"right"} />
       </View>
     </SafeAreaView>

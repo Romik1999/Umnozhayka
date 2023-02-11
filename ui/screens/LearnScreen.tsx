@@ -13,6 +13,18 @@ export const LearnScreen = () => {
     dispath(setCurrentNumber(number))
   }
 
+  const highestId = window.setTimeout(() => {
+    for (let i = highestId; i >= 0; i--) {
+      window.clearTimeout(i);
+    }
+  }, 0);
+
+  const highestIdTimer = window.setTimeout(() => {
+    for (let i = highestIdTimer; i >= 0; i--) {
+      window.clearTimeout(i);
+    }
+  }, 0);
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <Text style={styles.title}>{currentNumber} x</Text>

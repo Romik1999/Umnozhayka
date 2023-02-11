@@ -32,6 +32,18 @@ export const SettingsScreen = (props) => {
     navigation.navigate("Task", { screen: "TaskScreen", initial: false });
   };
 
+  const highestId = window.setTimeout(() => {
+    for (let i = highestId; i >= 0; i--) {
+      window.clearTimeout(i);
+    }
+  }, 0);
+
+  const highestIdTimer = window.setTimeout(() => {
+    for (let i = highestIdTimer; i >= 0; i--) {
+      window.clearTimeout(i);
+    }
+  }, 0);
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.titleBlock}>

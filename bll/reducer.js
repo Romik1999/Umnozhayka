@@ -6,10 +6,12 @@ const SET_TIMER = 'SET_TIMER';
 const SET_CURRENT_QUESTION = 'SET_CURRENT_QUESTION';
 const SET_CURRENT_ANSWER = 'SET_CURRENT_ANSWER';
 const SET_ANSWERS = 'SET_ANSWERS';
+const SET_FISRT_MULTIPLIER = 'SET_FISRT_MULTIPLIER';
+const SET_SECOND_MULTIPLIER = 'SET_SECOND_MULTIPLIER';
 
 const initialState = {
   currentNumber: "1",
-  forSpeed: true,
+  forSpeed: false,
   hard: true,
   taskButtons: {
     1: false,
@@ -42,6 +44,40 @@ const initialState = {
   timer: '0',
   currentQuestion: 1,
   currentAnswer: '',
+  firstMultiplier: {
+    1: '',
+    2: '',
+    3: '',
+    4: '',
+    5: '',
+    6: '',
+    7: '',
+    8: '',
+    9: '',
+    10: '',
+    11: '',
+    12: '',
+    13: '',
+    14: '',
+    15: '',
+  },
+  secondMultiplier: {
+    1: '',
+    2: '',
+    3: '',
+    4: '',
+    5: '',
+    6: '',
+    7: '',
+    8: '',
+    9: '',
+    10: '',
+    11: '',
+    12: '',
+    13: '',
+    14: '',
+    15: '',
+  },
 };
 
 export const reducer = (state = initialState, action) => {
@@ -62,6 +98,10 @@ export const reducer = (state = initialState, action) => {
       return { ...state, currentAnswer: action.currentAnswer };
     case SET_ANSWERS:
       return { ...state, answers: action.answers };
+    case SET_FISRT_MULTIPLIER:
+      return { ...state, firstMultiplier: action.firstMultiplier };
+    case SET_SECOND_MULTIPLIER:
+      return { ...state, secondMultiplier: action.secondMultiplier };
     default:
       return state;
   }
@@ -75,3 +115,7 @@ export const setTimer = timer => ({ type: SET_TIMER, timer });
 export const setCurrentQuestion = currentQuestion => ({ type: SET_CURRENT_QUESTION, currentQuestion });
 export const setCurrentAnswer = currentAnswer => ({ type: SET_CURRENT_ANSWER, currentAnswer });
 export const setAnswers = answers => ({ type: SET_ANSWERS, answers });
+
+
+export const setFirstMultiplier = firstMultiplier => ({ type: SET_FISRT_MULTIPLIER, firstMultiplier });
+export const setSecondMultiplier = secondMultiplier => ({ type: SET_SECOND_MULTIPLIER, secondMultiplier });

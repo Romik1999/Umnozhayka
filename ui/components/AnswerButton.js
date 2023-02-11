@@ -6,9 +6,9 @@ import test from "../../assets/images/test.png";
 import { COLORS } from "../../assets/style";
 
 export const AnswerButton = (props) => {
-  const { onPress } = props;
+  const { onPress, isDisabled } = props;
   return (
-    <TouchableOpacity onPress={onPress} style={styles.wrapper}>
+    <TouchableOpacity onPress={onPress} style={isDisabled ? styles.disabledWrapper : styles.wrapper} disabled={isDisabled}>
       <Text style={styles.text}>Answer</Text>
     </TouchableOpacity>
   );
@@ -38,4 +38,15 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     backgroundColor: 'red',
   },
+  disabledWrapper:{
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    columnGap: 20,
+    backgroundColor: 'grey',
+    width: 200,
+    height: 50,
+    borderRadius: 10,
+    padding: 10,
+  }
 });
