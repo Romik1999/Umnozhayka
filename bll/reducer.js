@@ -11,7 +11,7 @@ const SET_SECOND_MULTIPLIER = 'SET_SECOND_MULTIPLIER';
 
 const initialState = {
   currentNumber: "1",
-  forSpeed: false,
+  forSpeed: true,
   hard: true,
   taskButtons: {
     1: false,

@@ -129,7 +129,7 @@ export const TestScreen = (props) => {
 
       <View style={styles.contentBlock}>
         <Text style={styles.contentBlockText}>
-          {firstMultiplier[currentQuestion]} x {secondMultiplier[currentQuestion]} = {currentAnswer}
+          {firstMultiplier[currentQuestion]} x {secondMultiplier[currentQuestion]} = {currentAnswerDone ? answers[currentQuestion] : currentAnswer}
         </Text>
       </View>
 

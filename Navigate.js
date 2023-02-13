@@ -21,10 +21,10 @@ const Stack = createStackNavigator();
 
 export const Navigate = () => {
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
 
-    const TestBlock = () => {
+  const TestBlock = () => {
     return (
       <Stack.Navigator>
         <Stack.Screen name="TestScreen" component={TestScreen} options={{ headerShown: false }} />
