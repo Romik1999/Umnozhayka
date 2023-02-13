@@ -51,14 +51,19 @@ export const TestScreen = (props) => {
   };
 
   const onPressAnswer = () => {
-    const updateAnswers = {...answers}
-    updateAnswers[currentQuestion] = currentAnswer
-    dispatch(setAnswers(updateAnswers))
-    dispatch(setCurrentAnswer(''))
     if (currentQuestion < 15) {
       dispatch(setCurrentQuestion(currentQuestion + 1));
+      const updateAnswers = {...answers}
+      updateAnswers[currentQuestion] = currentAnswer
+      dispatch(setAnswers(updateAnswers))
+      dispatch(setCurrentAnswer(''))
     } else if (currentQuestion === 15) {
+      const updateAnswers = {...answers}
+      updateAnswers[currentQuestion] = currentAnswer
+      dispatch(setAnswers(updateAnswers))
+      dispatch(setCurrentAnswer(''))
       dispatch(setCurrentQuestion(15));
+      navigation.navigate("Task", { screen: "ResultScreen", initial: false });
     }
   };
 
@@ -102,6 +107,10 @@ export const TestScreen = (props) => {
   useEffect(() => {
     currentAnswer === '' ? setCurrentAnswerDone(false) : setCurrentAnswerDone(true)
   }, [currentAnswer]);
+  useEffect(() => {
+   const currentAnswerIsDone = answers[currentQuestion] !== '' ? true : false
+    setCurrentAnswerDone(currentAnswerIsDone)
+  }, [answers, currentQuestion]);
 
   return (
     <SafeAreaView style={styles.wrapper}>

@@ -1,4 +1,5 @@
 import React from "react";
+import {useDispatch} from 'react-redux';
 import { SafeAreaView, Image, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -13,12 +14,17 @@ import { TestScreen } from "./ui/screens/TestScreen";
 import settings from "./assets/images/settings.png";
 import settingsPink from "./assets/images/settingsPink.png";
 import { COLORS } from "./assets/style";
+import { setAnswers } from "./bll/reducer";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 export const Navigate = () => {
-  const TestBlock = () => {
+
+    const dispatch = useDispatch();
+
+
+    const TestBlock = () => {
     return (
       <Stack.Navigator>
         <Stack.Screen name="TestScreen" component={TestScreen} options={{ headerShown: false }} />
@@ -51,6 +57,27 @@ export const Navigate = () => {
               />
             ),
           }}
+          listeners={({navigation, route}) => ({
+              tabPress: () => {
+                  dispatch(setAnswers({
+                      1: '',
+                      2: '',
+                      3: '',
+                      4: '',
+                      5: '',
+                      6: '',
+                      7: '',
+                      8: '',
+                      9: '',
+                      10: '',
+                      11: '',
+                      12: '',
+                      13: '',
+                      14: '',
+                      15: '',
+                  }))
+              },
+          })}
         />
         <Tab.Screen
           name="Learn"
@@ -65,6 +92,27 @@ export const Navigate = () => {
             ),
             tabBarBadge: 3,
           }}
+          listeners={({navigation, route}) => ({
+              tabPress: () => {
+                  dispatch(setAnswers({
+                      1: '',
+                      2: '',
+                      3: '',
+                      4: '',
+                      5: '',
+                      6: '',
+                      7: '',
+                      8: '',
+                      9: '',
+                      10: '',
+                      11: '',
+                      12: '',
+                      13: '',
+                      14: '',
+                      15: '',
+                  }))
+              },
+          })}
         />
         <Tab.Screen
           name="Settings"
@@ -78,6 +126,27 @@ export const Navigate = () => {
               />
             ),
           }}
+          listeners={({navigation, route}) => ({
+              tabPress: () => {
+                  dispatch(setAnswers({
+                      1: '',
+                      2: '',
+                      3: '',
+                      4: '',
+                      5: '',
+                      6: '',
+                      7: '',
+                      8: '',
+                      9: '',
+                      10: '',
+                      11: '',
+                      12: '',
+                      13: '',
+                      14: '',
+                      15: '',
+                  }))
+              },
+          })}
         />
         <Tab.Screen
           name="Task"
@@ -93,6 +162,23 @@ export const Navigate = () => {
           }}
           listeners={({navigation, route}) => ({
             tabPress: () => {
+                dispatch(setAnswers({
+                        1: '',
+                        2: '',
+                        3: '',
+                        4: '',
+                        5: '',
+                        6: '',
+                        7: '',
+                        8: '',
+                        9: '',
+                        10: '',
+                        11: '',
+                        12: '',
+                        13: '',
+                        14: '',
+                        15: '',
+                    }))
               navigation.navigate('Task', {
                 screen: 'TaskScreen',
                 initial: false,
